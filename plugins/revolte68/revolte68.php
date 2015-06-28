@@ -607,6 +607,7 @@ function rev68_posts_custom_columns($column_name, $post_id) {
 
 add_action('manage_photo_posts_custom_column', 'rev68_posts_custom_columns', 5, 2);
 
+
 // Make custom date field sortable
 // *** http://code.tutsplus.com/articles/quick-tip-make-your-custom-column-sortable--wp-25095 ***
 
