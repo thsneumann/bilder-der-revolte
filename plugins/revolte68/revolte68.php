@@ -659,10 +659,10 @@ function rev68_filter_query( $query ) {
 		$excluded_categories = array( get_cat_ID( 'aussortiert' ), get_cat_ID( 'Datum unklar' ) ); // Exclude certain categories from main query
 		$query->set( 'category__not_in', $excluded_categories );
 
-		if ( isset($_GET['orderbydate']) ) {
+		if ( isset($_GET['datum_sortieren']) ) {
 			$query->set( 'meta_key', 'date' );
 	 		$query->set( 'orderby', 'meta_value_num' );
-			$query->set( 'order', $_GET['orderbydate'] );	
+			$query->set( 'order', ($_GET['datum_sortieren'] == 'aufsteigend') ? 'asc' : 'desc' );	
 		}
 
 
