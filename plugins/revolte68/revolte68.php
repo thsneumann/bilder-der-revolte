@@ -156,7 +156,9 @@ function rev68_settings_page() {
 	<h2>TimelineJS JSON erzeugen</h2>
 	<form method="post">
 		<input type="hidden" name="make_timeline" value="1">
-		<?php submit_button('JSON erzeugen'); ?>
+		<p class="submit">
+			<input type="submit" name="submit" id="submit" class="button button-primary" value="JSON erzeugen">
+		</p>
 	</form>
 
 
@@ -424,7 +426,7 @@ function rev68_delete_all() {
 }
 
 
-// Make JSON for timeline.js		*** to be improved: rewrite as wp-cron function or generate json on the fly ***
+// Make JSON for timeline.js
 function rev68_make_timeline_json() {
 
 	$upload_dir = wp_upload_dir();
@@ -438,6 +440,18 @@ function rev68_make_timeline_json() {
 	}
 
 }
+
+// Make JSON for timeline.js (silent) ** called when posts are saved **
+function rev68_make_timeline_json_silent() {
+
+	$upload_dir = wp_upload_dir();
+	$file = $upload_dir['basedir'] . '/timeline.jsonp';
+	$content = file_get_contents( plugin_dir_url( __FILE__ ) . 'revolte68_timelinejs_data.php' );
+	file_put_contents( $file, $content ); 
+
+}
+
+add_action( 'save_post', 'rev68_make_timeline_json_silent' );
 
 
 /************************************************************/
@@ -607,7 +621,6 @@ function rev68_posts_custom_columns($column_name, $post_id) {
 
 add_action('manage_photo_posts_custom_column', 'rev68_posts_custom_columns', 5, 2);
 
-
 // Make custom date field sortable
 // *** http://code.tutsplus.com/articles/quick-tip-make-your-custom-column-sortable--wp-25095 ***
 
@@ -763,8 +776,8 @@ function rev68_get_term_list( $post_id, $taxonomy ) {
 function rev68_storymapjs() {
 
 	$file = plugin_dir_url( __FILE__ ) . 'revolte68_storymapjs_data.php'; // Default dataset: all photos
-	if (isset( $_GET['spaziergang'] )) 
-		$file .= '?spaziergang=' . $_GET['spaziergang_name'];
+	if (isset( $_GET['spaziergang'] ) && $_GET['spaziergang'] != 'Alle Fotos') 
+		$file .= '?spaziergang=' . $_GET['spaziergang'];
 
 	ob_start();
 ?>
@@ -807,20 +820,24 @@ function rev68_walks_list() {
 	
 	//wp_list_categories( array( 'child_of' => get_cat_ID( 'Spaziergang' ) ) );
 
+	$selected = $_GET['spaziergang'];
 	$categories = get_categories( array( 'child_of' => get_cat_ID( 'Spaziergang' ) ) );
 	//echo "<pre>"; print_r($categories); echo "</pre>";
 
 	ob_start();
 
 ?>
-	<ul>
-<?php
-	foreach ($categories as $cat) {
-		echo '<li><a href="' . get_the_permalink() . '?spaziergang_name=' . $cat->slug . '">' . $cat->name . '</a></li>';
-	}
-?>
-	</ul>
-
+	<form id="rev68_walks" method="get">
+	Spaziergang auswählen: 
+	<select id="rev68_walks_select" name="spaziergang">
+		<option>Alle Fotos</option>
+		<?php foreach ($categories as $cat) { ?>
+		<option <?php if ($cat->name == $selected) echo 'selected'; ?>><?php echo $cat->name; ?></option> 
+		<?php } ?>
+	</select>
+	<input type="submit" value="Anzeigen">
+	</form>
+	<br />
 <?php						
 	return ob_get_clean();
 }
@@ -944,54 +961,23 @@ function rev68_scraper_medienarchiv68( $date ) {
 	$resultlist = $resultlist_ul->item(0)->getElementsByTagName( 'li' );
 	?>	
 	
-	<h4><?php echo $resultlist->length; ?> Artikel von medienarchiv68.de</h4>
+	<h4 class="meta-title"><?php echo $resultlist->length; ?> Artikel vom <?php echo $date; ?> auf medienarchiv68.de</h4>
 
-	<?php ob_start(); ?>
-
-	[su_tabs]
-	[su_tab title="1"]
-	<table class="medienarchiv68-resultlist">
+	<ul id="medienarchiv68-resultlist">
 	<?php
 	$i = 0;
 	foreach( $resultlist as $li ) {
+		$i++;
 		$title = $li->getElementsByTagName( 'h1' )->item(0)->nodeValue;
 		$imgsrc = $li->getElementsByTagName( 'img' )->item(0)->attributes->getNamedItem('src')->value;
 		$url = $li->getElementsByTagName( 'a' )->item(0)->attributes->getNamedItem('href')->value;
-		
-		if (!($i % 3)) {
-			if ($i>0) 
-				echo '</table>' . "\n" . 
-					'[/su_tab]' . "\n";
-			echo '[su_tab title="' . ($i / 3 + 1) . '"]' . "\n" . 
-				'<table class="medienarchiv68-resultlist">' . "\n";
-		}
-	
-	?>
-
-		<tr>
-			<td>
-				<a href="http://medienarchiv68.de<?php echo $url; ?>" target="_blank">
-					<img src="http://medienarchiv68.de<?php echo $imgsrc; ?>" />
-				</a>
-			</td>
-			<td valign="top">
-				<a href="http://medienarchiv68.de<?php echo $url; ?>" target="_blank"><?php echo $title; ?></a>
-			</td>
-
-		</tr>
+		?>
+		<li><a href="http://medienarchiv68.de<?php echo $url; ?>" target="_blank"><?php echo $title; ?></a></li>
 	<?php		
-		$i++;
 	}
 	?>
-	[/su_tab]
-	</table>
-	[/su_tabs]
-
-
-<?php 
-	$content = ob_get_clean();
-
-	echo do_shortcode( $content );
+	</ul>
+<?php
 }
 
 

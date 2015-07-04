@@ -153,7 +153,8 @@ body,
 button,
 input,
 select,
-textarea {
+textarea,
+a#rev68_faceted_search_submit {
   color: #2c3642;
   font-family: "PT Serif", serif;
   font-size: 16px;
@@ -230,7 +231,7 @@ h6 {
 }
 @media (max-width: 450px) {
   .site-title {
-    padding-left: 20px;
+    padding-left: 15px;
   }
 }
 
@@ -532,11 +533,11 @@ textarea {
 button,
 input[type="button"],
 input[type="reset"],
-input[type="submit"] {
+input[type="submit"],
+a#rev68_faceted_search_submit {
   border: none;
   border-radius: 3px;
   background: #a9bbd2;
-  box-shadow: 0 2px 0 #809abb;
   color: white;
   cursor: pointer;
   /* Improves usability and consistency of cursor style between image-type 'input' and others */
@@ -547,17 +548,17 @@ input[type="submit"] {
   text-transform: uppercase;
   font-size: 12px;
   font-size: 1.2rem;
-  line-height: 40px;
-  padding: 0 15px;
+  /*line-height: 25px;*/
+  padding: 8px 15px;
   -moz-box-sizing: border-box;
        box-sizing: border-box;
 }
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+a#rev68_faceted_search_submit:hover {
   background-color: #809abb;
-  box-shadow: 0 2px 0 #5f80a9;
 }
 button:focus, button:active,
 input[type="button"]:focus,
@@ -565,7 +566,9 @@ input[type="button"]:active,
 input[type="reset"]:focus,
 input[type="reset"]:active,
 input[type="submit"]:focus,
-input[type="submit"]:active {
+input[type="submit"]:active,
+a#rev68_faceted_search_submit:active,
+a#rev68_faceted_search_submit:focus {
   background-color: #809abb;
   box-shadow: 0 2px 0 #5f80a9;
 }
@@ -723,9 +726,11 @@ a:focus {
   line-height: 1.25;
   background-color: white;
 }
+/*
 .main-navigation ul ul li:first-of-type {
   padding-top: 10px;
 }
+*/
 .main-navigation ul ul li:last-of-type {
   padding-bottom: 10px;
 }
@@ -812,6 +817,7 @@ button.menu-toggle:focus {
   display: inline-block !important;
 }
 
+/*
 @media screen and (max-width: 800px) {
   .nav-container {
     position: relative;
@@ -871,6 +877,9 @@ button.menu-toggle:focus {
     padding-bottom: 5px;
   }
 }
+*/
+
+
 @media (max-width: 450px) {
   .main-navigation.toggled {
     padding-left: 5px;
@@ -1517,7 +1526,7 @@ body.no-image .entry-title {
   margin: 0;
 }
 .singular .post-navigation .nav-links {
-  margin: 0 20px 100px 120px;
+  margin: 0 20px 100px 60px;
   max-width: 850px;
   overflow: hidden;
 }
@@ -1563,7 +1572,7 @@ body.no-image .entry-title {
     float: none;
     overflow: hidden;
     margin-top: 75px;
-    padding-left: 0;
+    padding-left: 0!important; /*jh*/
     width: 100%;
   }
   .singular .entry-footer .meta-item {
@@ -1571,8 +1580,10 @@ body.no-image .entry-title {
     -moz-box-sizing: border-box;
          box-sizing: border-box;
     padding-right: 5px;
-    width: 32%;
     vertical-align: top;
+    /*width: 32%;*/
+    width: 100%;
+    display: block;
   }
 }
 
@@ -2062,7 +2073,10 @@ body.no-image .entry-title {
 
 @media (max-width: 450px) {
   .singular .entry-footer .meta-item {
-    width: 48%;
+    /*width: 48%;*/
+      width: 100%;
+      display: block;
+    
   }
 }
 /*--------------------------------------------------------------
@@ -2320,11 +2334,13 @@ img[class*="wp-image-"] {
 	margin-bottom: 20px;	
 }
 
-.singular.page-template-full-width .hentry {
+.singular.page-template-full-width .hentry,
+.singular.page-template-full-width-geomashup .hentry{
 	width: 100%;
 	max-width: 100%;
 	margin: 0;
 	padding: 0;
+	overflow: hidden;
 }
 
 .post-grid .entry-link span,
@@ -2350,4 +2366,53 @@ img[class*="wp-image-"] {
 
 #site-navigation li > a {
 	font-size: 110%;
+}
+
+.entry-title {
+	color: #FF174C; /*#AE0028;*/
+}
+
+body.no-image .entry-header {
+	padding: 20px;
+}
+
+form#rev68_walks { /* Spaziergänge */
+	padding-left: 20px;
+}
+
+a#rev68_faceted_search_submit {
+	text-decoration: none;
+	font-style: normal;
+}
+
+/* GeoMashup */
+.locationinfo.post-location-info .mapwrap img {
+	height: auto !important;
+	width: auto;
+	max-width: 98%;
+}
+
+/* Medienarchiv68 */
+
+ul#medienarchiv68-resultlist {
+	list-style: none;
+	margin: 0;
+}
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+	.singular .hentry {
+		margin-left: 15px;
+	}
+
+	#sidebar-1 {
+		width: 100%;
+	}
+	
+	.su-tabs-nav span {
+		display: inline !important;
+	}
+	
 }

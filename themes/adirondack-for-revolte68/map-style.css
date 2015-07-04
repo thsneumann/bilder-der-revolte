@@ -1,0 +1,20 @@
+/* Custom Style for Geo Mashup Maps */
+
+.locationinfo.post-location-info {
+	max-width: 300px;
+}
+
+.locationinfo.post-location-info .mapwrap img {
+  height: auto !important;
+  width: auto;
+  max-width: 98%;
+}
+
+.locationinfo.post-location-info h2 {
+  font-size: 100%;
+}
+
+.locationinfo.post-location-info h2 a {
+	text-decoration: none;
+}
+

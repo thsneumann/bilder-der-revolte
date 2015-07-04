@@ -13,6 +13,6 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
+<script type="text/javascript" src="http://bilder-der-revolte.de/wp-content/themes/adirondack-for-revolte68/wikibox/wikibox.js"></script>
 </body>
 </html>

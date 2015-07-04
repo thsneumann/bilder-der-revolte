@@ -1,0 +1,269 @@
+
+/* 
+    Description: Create useful infoboxes based on GND-IDs and enriched with data from Wikipedia! 
+    Author     : Johannes Hercher <hercher@ub.fu-berlin.de>
+    package    : https://github.com/jhercher/wikibox
+*/
+.wikibox {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px #999;
+    position: absolute;
+    left: 30%;
+    background-color: #fff !important;
+    max-width: 40em;
+    height: auto;
+    z-index: 4;
+    padding: 1.25em;
+}
+
+.wikibox-text {
+    color: #222;
+}
+.wikibox-content {
+}
+
+.float-left {
+    padding-right: 1em;
+    float: left;
+}
+
+.wikibox-header {
+    height: auto;
+    margin: .4em 0;
+    font-size: 1.35em;
+    padding: 1em .4em;
+}
+
+.wikibox-footer {
+    border-top: 1px solid #ddd;
+    height: 1em;
+    clear: both;
+    margin: .4em 0 0;
+    padding: .4em 0;
+}
+
+.inline {
+    display: inline !important;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.wikibox-Content {
+    width: 40em;
+}
+
+.wikibox-img {
+    width: 100px;
+    height: auto;
+    padding-top: 5px;
+}
+
+.loading {
+    background: url(img/loader.gif) 50% 50% no-repeat #fff !important;
+    z-index: 999999;
+}
+
+.close {
+    background: url(img/close.png) no-repeat transparent;
+    color: transparent;
+    float: right;
+    margin: 0;
+    padding: .5em;
+    box-shadow: none;
+}
+
+.wikibox-HeadingShortInfo {
+    font-size: 1em;
+    display: block;
+    /*  padding-left: .4em;*/
+    border-bottom: 1px solid #ccc;
+    margin: .5em 0 1em;
+}
+
+.wikibox-Links {
+    margin: 1em 0 0;
+}
+
+.wikibox-List {
+    font-size: 1em;
+    margin-left: .6em;
+}
+
+.wikibox-headline a, .wikibox-headline {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: black !important;
+}
+
+footer.entry-footer a {
+    color: rgb(5, 115, 223);
+}
+
+footer.entry-footer a:hover {
+    color: rgb(49, 55, 63);
+    text-decoration: underline;
+}
+
+@media (max-width: 600px){
+    .singular .entry-footer {
+        float: none;
+        overflow: hidden;
+        margin-top: 75px;
+        padding-left: 0!important;
+        width: 100%;
+        position: relative;
+        left: 0;
+    }
+}
+
+
+@media (max-width: 600px){
+    .wikibox,.wikibox-content {
+        width: 100%;}
+    .wikibox button.close {
+        z-index: 100;
+        position: relative;
+    }
+}
+
+@media (max-width: 450px){
+    .wikibox,.wikibox-content {
+        width: 100%;
+        position: relative;
+        left: 0;
+    }
+    .wikibox button.close {
+        z-index: 100;
+        position: relative;
+    }
+}
+
+/*Styles for dropdown menue in infobox*/
+ul.drop-links li a.base {
+    display: block;
+    background: #9c0;
+    padding: 1em 2em;
+    text-decoration: none;
+    border-bottom: 0px solid #666;
+    white-space: nowrap;
+    color: #333;
+}
+
+ul.drop-links {list-style: none;padding: 0px;
+               /*margin: 0px;*/
+}
+ul.drop-links li {
+    display: block;
+    position: relative;
+    float: left;
+    border:1px solid #666
+}
+
+ul.drop-links li ul {
+    display: none;
+}
+ul.drop-links li a {
+    display: block; 
+    background: #fff;
+    padding: 5px 10px 5px 10px; 
+    text-decoration:none; border-bottom:0px solid #666;
+    white-space: nowrap;color: #333; 
+    margin-left: 30px;
+}
+ul.drop-links li a:hover {
+    background-color: #fff;
+}
+ul.drop-links li:hover ul {
+    display: block;
+    position: absolute;
+    padding-left: 0px;
+    margin: -1px;
+    background-color: #fff;
+    border-top:1px solid #000;
+}
+ul.drop-links li:hover li {
+    float: none;
+}
+ul.drop-links li:hover a {
+    background-color: transparent;
+}
+ul.drop-links li:hover li:hover {
+    background-color: #eee;
+}
+ul.drop-links li ul li {
+    border-top: 0px;
+}
+
+span.thumb-base
+{background: url('img/sprite-wikibox.png') no-repeat -21px -21px;
+ width: 16px;
+ height: 16px;
+ position: absolute;
+ top: 10px;
+ left: 7px; }
+span.thumb-worldcat {
+    background: url('img/sprite-wikibox.png') no-repeat -1px -20px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}
+span.thumb-europeana {
+    background: url('img/sprite-wikibox.png') no-repeat -1px -40px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}
+span.thumb-library {
+    background: url('img/sprite-wikibox.png') no-repeat -1px -80px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}
+span.thumb-portal {
+    background: url('img/sprite-wikibox.png') no-repeat -1px -60px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}
+span.thumb-wikipedia {
+    background: url('img/sprite-wikibox.png') no-repeat -1px -3px;
+    width: 16px;
+    height: 16px;
+    /* z-index: 1111111111111; */
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}   
+span.thumb-dnb{
+    background: url('img/sprite-wikibox.png') no-repeat -1px -40px;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 10px;
+    left: 7px;
+}
+
+/*TODO: Icons in expanded list*/
+ul.drop-links-list-expanded li a span {
+    display: none;
+}
+
+/*specific to bilder-der-revolte.de*/
+
+.meta-item {
+    color: #222;
+}
+/*.entry-title {
+  color: #E863D8;
+}*/

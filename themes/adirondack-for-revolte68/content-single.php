@@ -18,7 +18,13 @@ $meta = get_post_meta( $post_id );
 
 	<div class="entry-content">
 		<div class="wrapper">
-			<?php the_post_thumbnail(); ?>
+			<?php
+			$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large' );
+			echo '<a href="' . $large_image_url[0] . '" title="' . the_title_attribute( 'echo=0' ) . '">';
+			the_post_thumbnail();
+			echo '</a>';
+			?>
+
 			<?php the_content(); ?>
 
 			<h4>Kommentar</h4>
@@ -26,7 +32,7 @@ $meta = get_post_meta( $post_id );
 			<?php echo $meta['commentary'][0]; ?>
 			</p>
 
-			<?php //rev68_scraper_medienarchiv68( rev68_format_date( $meta['date'][0], 'show' ) ); ?>
+			<?php //echo rev68_scraper_medienarchiv68( rev68_format_date( $meta['date'][0], 'show' ) ); ?>
 
 			<?php
 				wp_link_pages( array(
@@ -72,7 +78,7 @@ $meta = get_post_meta( $post_id );
 		<?php endif; ?>
 
 		<div class="meta-item medienarchiv68">
-			<?php //rev68_scraper_medienarchiv68( rev68_format_date( $meta['date'][0], 'show' ) ); ?>
+			<?php rev68_scraper_medienarchiv68( rev68_format_date( $meta['date'][0], 'show' ) ); ?>
 		</div>
 
 	</footer><!-- .entry-footer -->

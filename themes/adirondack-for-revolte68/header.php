@@ -15,9 +15,12 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 <?php wp_head(); ?>
+<!-- my content -->
+<link rel="stylesheet" id="wikibox-style-css" href="http://bilder-der-revolte.de/wp-content/themes/adirondack-for-revolte68/wikibox/wikibox.css" type="text/css" media="all">
 </head>
 
 <body <?php body_class(); ?>>
+<?php include_once( get_template_directory_uri() . "/inc/analyticstracking.php") ?>
 <?php do_action( 'adirondack_load_svg' ); ?>
 
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'adirondack' ); ?></a>
@@ -52,10 +55,10 @@
 			) ); 
 			*/
 
-			$options_button = ''; //'<a id="sidebar-xx-toggle" href="#"><i class="fa fa-bars"></i></a>';
-			if (is_home() || is_archive()) {
+			//$options_button = ''; //'<a id="sidebar-xx-toggle" href="#"><i class="fa fa-bars"></i></a>';
+			//if (is_home() || is_archive()) {
 				$options_button = '<a id="sidebar-1-toggle" href="#"><i class="fa fa-search"></i></a>';
-			}
+			//}
 
 			wp_nav_menu( array(
 				'theme_location' => 'primary',

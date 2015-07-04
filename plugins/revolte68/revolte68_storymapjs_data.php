@@ -31,7 +31,7 @@ $args = array( 'post_type' 			=> 'photo',
 
 $first_slide_headline = 'Ludwig Binder fotografiert die 68er Bewegung: ein Stadtspaziergang';
 
-if ( ($cat_slug = $_GET['spaziergang_name']) != '') {
+if ( ($cat_slug = $_GET['spaziergang']) != '') {
 	$args['category_name'] = $cat_slug;
 	$first_slide_headline = 'Spaziergang: ' . get_category_by_slug($cat_slug)->name;
 }
@@ -40,6 +40,7 @@ query_posts( $args );
 
 // Set up Storymap data as array, later convert to JSON
 $storymap_data = array( 'storymap' => array( 
+							'language'	=> 'de',
 							'slides' => array( 
 								array( 
 									'type' => 'overview',
@@ -84,6 +85,11 @@ while (have_posts()): the_post();
 			'lon'	=> $location->lng,
 			'zoom'	=> 10,
 			'line'	=> true
+		),
+		'media' => array(
+			'url' 	   => $thumbnail[0],
+			'credit'   => '',
+			'caption'  => ''
 		)
 	);
 

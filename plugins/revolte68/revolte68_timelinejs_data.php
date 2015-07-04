@@ -107,7 +107,7 @@ while ( $the_query->have_posts() ) {
 	$date_json = rev68_format_date( $meta['date'][0], 'json' );
 	// Get attached image		
 	// *** https://codex.wordpress.org/Function_Reference/get_children#Show_the_first_image_associated_with_the_post ***
-	$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'full' );
+	$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'post-thumbnail' );
 	
 	$timeline_data['timeline']['date'][] = array(
 			'startDate' => $date_json,

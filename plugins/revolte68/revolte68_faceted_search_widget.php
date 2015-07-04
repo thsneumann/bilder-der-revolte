@@ -77,10 +77,16 @@ class Rev68_Faceted_Search_Widget extends WP_Widget {
 	// List taxonomies
 	public function display() {
 		global $wp_query;
+?>
+		<span class="button">
+		<?php echo '<a id="rev68_faceted_search_submit" href="'. $_SERVER['PHP_SELF'] . '" onClick="return rev68_facets_redirect()">Filtern</a><br /><br />';	?>
+		</span>
+		<form id="rev68_faceted_search_form" method="GET">
+<?php /*		
+		<input id="rev68_faceted_search_submit" type="submit" value="Filtern" onClick="return rev68_facets_redirect()"><br /><br />	
+*/ ?>
 
-		echo '<a id="rev68_faceted_search_submit" class="button" href="'. $_SERVER['PHP_SELF'] . '" onClick="return rev68_facets_redirect()">Filtern</a><br />';		
-		echo '<form id="rev68_faceted_search_form">';
-		
+<?php
 		$taxonomies_to_show = array( 'post_tag', 'person' ); // *hardcoded* change to selectable later
 		foreach ($taxonomies_to_show as $tax) {
 			$taxonomies[] = get_taxonomy( $tax );

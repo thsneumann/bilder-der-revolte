@@ -1,0 +1,121 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28.06.2015, 13:58:53
+    Author     : JoH
+*/
+.wikibox
+{
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: 1px 1px 1px 1px #999;
+	position: absolute;
+	left: 30%;
+	background-color: #fff!important;
+	width: auto;
+        max-width: 40em;
+	height: auto;
+	z-index: 4;
+	padding: 1.25em;
+}
+
+
+.wikibox-text
+{
+/*	width: 40em;*/
+//	margin: 1em;
+//        padding: .5em;
+        color:#222;
+}
+
+.wikibox-header,.wikibox-footer
+{
+//	display: block;
+//	min-width: 300px;
+//	height: 1em;
+}
+
+.float-left
+{
+	padding-right: 1em;
+	float: left;
+}
+
+.wikibox-header
+{
+	height: auto;
+	margin: .4em 0;
+	font-size: 1.35em;
+	padding: 1em .4em;
+}
+
+.wikibox-footer
+{
+	border-top: 1px solid #ddd;
+	height: 1em; 
+	clear: both;
+	margin: .4em 0 0;
+	padding: .4em;
+}
+
+.inline { display: inline!important; }
+.italic { font-style: italic; }
+.wikibox-Content { width: 40em; }
+
+.wikibox-Img
+{
+/*	height: 15em;*/
+	width: 100px;
+        height: auto;
+}
+
+
+.loading
+{
+	background: url(../../../img/loader.gif) 50% 50% no-repeat #fff!important;
+	z-index: 999999;
+}
+
+.close
+{
+	background: url(../../../img/close.png) no-repeat transparent;
+	color: transparent;
+	float: right;
+	margin: 0;
+	padding: .5em;
+        box-shadow: none;
+}
+
+
+
+.wikibox-HeadingShortInfo
+{
+	font-size: 1em;
+	display: block;
+	padding-left: .4em;
+	border-bottom: 1px solid #ccc;
+	margin: .5em 0 1em;
+}
+
+.wikibox-Links { margin: 1em 0 0; }
+
+.wikibox-List
+{
+	font-size: 1em;
+	margin-left: .6em;
+}
+
+.wikibox-gndlink{
+    /*margin: 3px;*/ 
+}
+.wikibox-headline a , .wikibox-headline {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: black!important;
+}
+
+/*To be fixed by Thomas*/
+.meta-item{color: #222;}

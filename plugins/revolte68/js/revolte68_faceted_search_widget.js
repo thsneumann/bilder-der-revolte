@@ -1,6 +1,6 @@
 function rev68_facets_redirect() {
 	
-	var url = document.getElementById( "rev68_faceted_search_submit" ).href + '?';
+	var url = 'http://bilder-der-revolte.de/';
 
 	// Order by date
 	var orderbydate = '';
@@ -28,6 +28,11 @@ function rev68_facets_redirect() {
 		}
 	}
 	
+	if (tags_checked.length == 0 && persons_checked.length == 0 && orderbydate == '') 
+		return false;
+	else
+		url += '?';
+
 	if (tags_checked.length > 0) url += 'tag=' + tags_checked.join( ',' ) + '&';
 	if (persons_checked.length > 0) url += 'person=' + persons_checked.join( ',' ) + '&';    // OR 
 	if (orderbydate != '') url += 'datum_sortieren=' + orderbydate; 
