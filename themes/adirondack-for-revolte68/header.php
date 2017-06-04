@@ -16,11 +16,11 @@
 
 <?php wp_head(); ?>
 <!-- my content -->
-<link rel="stylesheet" id="wikibox-style-css" href="http://bilder-der-revolte.de/wp-content/themes/adirondack-for-revolte68/wikibox/wikibox.css" type="text/css" media="all">
+<link rel="stylesheet" id="wikibox-style-css" href="<?php echo get_template_directory_uri() . '/wikibox/wikibox.css'; ?>" type="text/css" media="all">
 </head>
 
 <body <?php body_class(); ?>>
-<?php include_once( get_template_directory_uri() . "/inc/analyticstracking.php") ?>
+<?php include_once( dirname(__FILE__) . "/inc/analyticstracking.php") ?>
 <?php do_action( 'adirondack_load_svg' ); ?>
 
 <a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'adirondack' ); ?></a>
