@@ -789,9 +789,9 @@ function rev68_storymapjs() {
 	<div id="mapdiv" style="width: 100%; height: 600px;"></div> 
 
 	<!-- Your script tags should be placed before the closing body tag. -->
-	<link rel="stylesheet" href="https://cdn.knightlab.com/libs/storymapjs/latest/css/storymap.css">
-	<script type="text/javascript" src="https://cdn.knightlab.com/libs/storymapjs/latest/js/storymap-min.js"></script>
-
+	<link rel="stylesheet" href="https://cdn.knightlab.com/libs/storymapjs/0.7.2/css/storymap.css">
+	<script type="text/javascript" src="https://cdn.knightlab.com/libs/storymapjs/0.7.2/js/storymap-min.js"></script>
+	
 	<script>
 	// storymap_data can be an URL or a Javascript object
 	var storymap_data = '<?php echo $file; ?>'; 
